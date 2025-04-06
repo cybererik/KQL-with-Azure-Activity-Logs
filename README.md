@@ -1,0 +1,1 @@
+# KQL-with-Azure-Activity-Logs
