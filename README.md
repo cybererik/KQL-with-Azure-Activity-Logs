@@ -26,7 +26,7 @@ In the following queries, we’re tapping into Azure's `AzureActivity` table, wh
 
 
 ## 📊 Query #1 Results: Detecting Successful DELETE Operations
-The results reveal that several callers successfully deleted resources, with the number of deletion records surpassing the set threshold (1). To narrow down our investigation, we decided to focus on the specific caller (me): `9e3afd45a84b1308bbb838fd9c02c6d0b48a98d1174e99cdf13c93b73849528d@lognpacific.com`.
+The results reveal that several callers successfully deleted resources, with the number of deletion records surpassing the set threshold (1). To narrow down our investigation, we decided to focus on the specific caller: `9e3afd45a84b1308bbb838fd9c02c6d0b48a98d1174e99cdf13c93b73849528d@lognpacific.com`.
 
 Based on the data, identified by their caller. The query filters for successful "DELETE" operations within the last 2 hours, grouping by the caller and resource group, and flags any activity exceeding the defined threshold.
 
@@ -37,7 +37,45 @@ Based on the data, identified by their caller. The query filters for successful 
 ![Screenshot 2025-04-08 043533](https://github.com/user-attachments/assets/7b88c7ff-a5b0-49e1-a4d2-a2f33a416c3f)
 
 ## 📊 Query #2 Results: Successful Activities by Specific Caller
+This query focuses on the activities of a specific caller within the last 2 hours, highlighting successful operations. It helps us spot patterns or suspicious behavior, such as deletions that may be part of a larger series of actions. The goal is to detect any abnormal actions that might indicate a compromised account or unauthorized behavior.
 
-******Enter stuff here***************
+### Operations Performed by the Caller:
+- **MICROSOFT.NETWORK/PUBLICIPADDRESS/DELETE**
+- **MICROSOFT.NETWORK/NETWORKINTERFACES/DELETE**
+- **MICROSOFT.COMPUTE/DISKS/DELETE**
+- **MICROSOFT.COMPUTE/VIRTUALMACHINES/DELETE**
+
+These actions were successfully executed on **4/8/2025**. The caller was responsible for deleting critical resources in the Azure environment, including network interfaces and virtual machines—an unusual activity that requires further investigation.
 
 **Query #2 Explanation** - [Click to View](https://github.com/cybererik/KQL-with-Azure-Activity-Logs/blob/main/KQL%20Query%3A%20Successful%20Activities%20by%20Specific%20Caller)
+
+-----
+
+## 🧠 Conclusion
+This project demonstrates how to use KQL within Azure Log Analytics to detect suspicious DELETE operations in an Azure environment. It simulates a security operations team responding to the disappearance of multiple resources from a subscription. The team’s objectives are to:
+
+- **Identify who deleted the resources**
+- **Determine how many deletions occurred**
+- **Understand when and what resources were deleted**
+
+The project filters logs from AzureActivity, specifically targeting successful DELETE actions performed by a defined caller within the last 2 hours. By analyzing these logs, we can spot unusual activities such as mass deletions, which could signal a potential security incident or insider threat.
+
+The two main queries focus on:
+
+1) **Detecting DELETE operations with a count threshold to flag unusual activity.**
+
+2) **Investigating a specific caller to identify detailed operations and potential malicious behavior.**
+
+By leveraging these techniques, security teams can efficiently detect abnormal actions, helping to mitigate risks and enhance security monitoring within Azure environments.
+
+
+
+
+
+
+
+
+
+
+
+
