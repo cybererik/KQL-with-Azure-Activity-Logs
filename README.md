@@ -15,11 +15,13 @@ The security team estimates that the deletions occurred about 1-2 hours ago, as 
 - Identify **who** deleted the resources,
 - Verify **how many** deletions were made,
 - And see **when** and **what** resources were deleted.
-- 
+
 ---
 ## Log Analytics Workspace
-In this query, we’re tapping into Azure's `AzureActivity` table, which logs control plane actions like creating, modifying, or deleting resources. This table captures detailed records of these activities, including who performed them and when, making it a valuable tool for monitoring and auditing what's happening in your Azure environment.
+In the following queries, we’re tapping into Azure's `AzureActivity` table, which logs control plane actions like creating, modifying, or deleting resources. This table captures detailed records of these activities, including who performed them and when, making it a valuable tool for monitoring and auditing what's happening in your Azure environment.
 
+------
+## Initial Investigation
 ![Screenshot 2025-04-08 043233](https://github.com/user-attachments/assets/02cd7ef6-f626-41b3-bff4-1c9736f348b1)
 
 
@@ -30,6 +32,8 @@ Based on the data, identified by their caller. The query filters for successful 
 
 **Query #1 Explanation** - [Click to View](https://github.com/cybererik/KQL-with-Azure-Activity-Logs/blob/main/KQL%20Query%3A%20Detecting%20Successful%20DELETE%20Operations)
 
+-------
 
+![Screenshot 2025-04-08 043533](https://github.com/user-attachments/assets/7b88c7ff-a5b0-49e1-a4d2-a2f33a416c3f)
 
 
