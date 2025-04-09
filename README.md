@@ -28,8 +28,7 @@ The results reveal that several callers successfully deleted resources, with the
 
 Based on the data, identified by their caller. The query filters for successful "DELETE" operations within the last 2 hours, grouping by the caller and resource group, and flags any activity exceeding the defined threshold.
 
-**Query #1 Explanation** - [Click to View](https://gist.github.com/cybererik/18aee8c7d3765f9fb04b1517707c8f72)
-
+**Query #1 Explanation** - [Click to View](https://github.com/cybererik/KQL-with-Azure-Activity-Logs/blob/main/KQL%20Query%3A%20Detecting%20Successful%20DELETE%20Operations)
 
 
 
