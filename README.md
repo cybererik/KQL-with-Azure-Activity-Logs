@@ -15,24 +15,22 @@ The security team estimates that the deletions occurred about 1-2 hours ago, as 
 - Identify **who** deleted the resources,
 - Verify **how many** deletions were made,
 - And see **when** and **what** resources were deleted.
+- 
 ---
 ## Log Analytics Workspace
+In this query, we’re tapping into Azure's `AzureActivity` table, which logs control plane actions like creating, modifying, or deleting resources. This table captures detailed records of these activities, including who performed them and when, making it a valuable tool for monitoring and auditing what's happening in your Azure environment.
 
 ![Screenshot 2025-04-08 043233](https://github.com/user-attachments/assets/02cd7ef6-f626-41b3-bff4-1c9736f348b1)
 
-## 📊 Query 1: Detecting Successful DELETE Operations
 
-We’re using Azure's `AzureActivity` table which logs control plane operations, like resource creations or deletions.
+## 📊 Query #1 Results: Detecting Successful DELETE Operations
+The results reveal that several callers successfully deleted resources, with the number of deletion records surpassing the set threshold (1). To narrow down our investigation, we decided to focus on the specific caller (me): `9e3afd45a84b1308bbb838fd9c02c6d0b48a98d1174e99cdf13c93b73849528d@lognpacific.com`.
 
-### Step 1: Detect Unusual DELETE Patterns
+Based on the data, identified by their caller. The query filters for successful "DELETE" operations within the last 2 hours, grouping by the caller and resource group, and flags any activity exceeding the defined threshold.
 
-```kql
-let resource_threshold = 1;
-let time_threshold_in_hours = 2h;
-AzureActivity
-| where TimeGenerated > ago(time_threshold_in_hours)
-| where OperationNameValue endswith "DELETE" and ActivityStatusValue == "Success"
-| summarize number_of_records = count() by Caller, ActivityStatusValue, ResourceGroup
-| where number_of_records > resource_threshold
+**Query #1 Explanation** - [Click to View](https://gist.github.com/cybererik/18aee8c7d3765f9fb04b1517707c8f72)
+
+
+
 
 
