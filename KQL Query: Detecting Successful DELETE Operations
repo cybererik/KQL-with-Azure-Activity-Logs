@@ -1,0 +1,41 @@
+##Author: Erik Vargas
+##Tested by: Erik Vargas
+##Date Created: 2025-04-09 16:32:48
+
+-----------------------------------------
+
+let resource_threshold = 1;
+let time_threshold_in_hours = 2h;  // This will be used directly in the query
+AzureActivity
+| where TimeGenerated > ago(time_threshold_in_hours)
+| where OperationNameValue endswith "DELETE" and ActivityStatusValue == "Success"
+| summarize number_of_records = count() by Caller, ActivityStatusValue, ResourceGroup
+| where number_of_records > resource_threshold
+
+-----------------------------------------
+
+Description:
+This KQL query analyzes Azure Activity Logs to identify users who performed more than one successful DELETE operation within the last 2 hours. It helps detect potentially unauthorized or bulk deletion of resources in an Azure environment.
+
+Line-by-line Explanation:
+
+1. let resource_threshold = 1;
+   - Sets a threshold for the number of delete actions to consider suspicious. Here, more than 1 delete.
+
+2. let time_threshold_in_hours = 2h;
+   - Defines the time window (last 2 hours) for the analysis.
+
+3. AzureActivity
+   - Refers to the Azure Activity log table containing management operations.
+
+4. | where TimeGenerated > ago(time_threshold_in_hours)
+   - Filters the log entries to only include those generated in the past 2 hours.
+
+5. | where OperationNameValue endswith "DELETE" and ActivityStatusValue == "Success"
+   - Narrows down to only successful delete operations.
+
+6. | summarize number_of_records = count() by Caller, ActivityStatusValue, ResourceGroup
+   - Aggregates the results, counting the number of successful deletes by each user (Caller), along with the status and resource group.
+
+7. | where number_of_records > resource_threshold
+   - Final filter to show only users who performed more than one delete operation.
