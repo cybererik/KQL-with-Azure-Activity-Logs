@@ -1,0 +1,39 @@
+
+##Author: Erik Vargas  
+##Tested by: Erik Vargas  
+##Date Created: 2025-04-09 16:40:18  
+
+-----------------------------------------
+
+AzureActivity
+| where TimeGenerated > ago(2h)
+| where Caller == "9e3afd45a84b1308bbb838fd9c02c6d0b48a98d1174e99cdf13c93b73849528d@lognpacific.com"
+| where ActivityStatusValue == "Success"
+| project TimeGenerated, OperationNameValue, ActivityStatusValue, ResourceGroup, Caller
+| order by TimeGenerated desc
+
+-----------------------------------------
+
+**Description:**  
+This KQL query filters Azure Activity Logs to retrieve all successful activity entries by a specific user (Caller) within the last 2 hours. The query orders the results by time in descending order to show the most recent actions first.
+
+**Line-by-line Explanation:**
+
+1. AzureActivity  
+   - Refers to the Azure Activity log table that tracks all management operations in an Azure environment.
+
+2. | where TimeGenerated > ago(2h)  
+   - Filters the log to include only activities that occurred within the last 2 hours.
+
+3. | where Caller == "9e3afd45a84b1308bbb838fd9c02c6d0b48a98d1174e99cdf13c93b73849528d@lognpacific.com"  
+   - Specifies the unique identifier (Caller) to filter logs for a specific user.
+
+4. | where ActivityStatusValue == "Success"  
+   - Narrows down to only successful activities.
+
+5. | project TimeGenerated, OperationNameValue, ActivityStatusValue, ResourceGroup, ResourceId, Caller  
+   - Projects only the specified columns to return in the results: the timestamp (TimeGenerated), operation name (OperationNameValue), status (ActivityStatusValue), resource group, resource ID, and caller ID.
+
+6. | order by TimeGenerated desc  
+   - Orders the results by the timestamp in descending order, so the most recent actions are displayed first.
+
