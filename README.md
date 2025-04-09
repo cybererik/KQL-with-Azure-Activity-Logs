@@ -33,7 +33,11 @@ Based on the data, identified by their caller. The query filters for successful 
 **Query #1 Explanation** - [Click to View](https://github.com/cybererik/KQL-with-Azure-Activity-Logs/blob/main/KQL%20Query%3A%20Detecting%20Successful%20DELETE%20Operations)
 
 -------
-
+## Filtering Activity Logs For Specific Caller
 ![Screenshot 2025-04-08 043533](https://github.com/user-attachments/assets/7b88c7ff-a5b0-49e1-a4d2-a2f33a416c3f)
 
+## 📊 Query #2 Results: Successful Activities by Specific Caller
 
+******Enter stuff here***************
+
+**Query #2 Explanation** - [Click to View](https://github.com/cybererik/KQL-with-Azure-Activity-Logs/blob/main/KQL%20Query%3A%20Successful%20Activities%20by%20Specific%20Caller)
