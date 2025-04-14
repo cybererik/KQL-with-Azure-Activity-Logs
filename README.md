@@ -17,8 +17,11 @@ The security team estimates that the deletions occurred about 1-2 hours ago, as 
 - And see **when** and **what** resources were deleted.
 
 ---
-## Log Analytics Workspace
-In the following queries, we’re tapping into Azure's `AzureActivity` table, which logs control plane actions like creating, modifying, or deleting resources. This table captures detailed records of these activities, including who performed them and when, making it a valuable tool for monitoring and auditing what's happening in your Azure environment.
+## Tools & Technologies
+- **Microsoft Azure** (Virtual Machine Provisioning & Log Analytics Workspace)
+- **Microsoft Sentinel (SIEM)** (Log Collection)
+
+**Log Analytics Workspace:** In the following queries, we’re tapping into Azure's `AzureActivity` table, which logs management plane actions like creating, modifying, or deleting resources. This table captures detailed records of these activities, including who performed them and when, making it a valuable tool for monitoring and auditing what's happening in your Azure environment.
 
 ------
 ## Initial Investigation
