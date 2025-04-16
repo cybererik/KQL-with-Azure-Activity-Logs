@@ -1,8 +1,7 @@
 # KQL-with-Azure-Activity-Logs
 
-<div style="text-align: center;">
-    <img src="https://github.com/user-attachments/assets/28825d0e-2251-4e14-a295-70206bd76cf8" alt="image" style="width: 80%; max-width: 800px;">
-</div>
+![Introduction to Microsoft Sentinel (SIEM)](https://github.com/user-attachments/assets/8038f7fc-9926-4997-91af-3302466cb45c)
+
 
 ## Overview
 This project dives into Azure Log Analytics to create a KQL (Kusto Query Language) based solution for detecting suspicious **DELETE** operations in Azure environments. It's designed to help blue teams monitor unusual behavior patterns, such as mass resource deletions, which could indicate a potential compromise or insider threat.
