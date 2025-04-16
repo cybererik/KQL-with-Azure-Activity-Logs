@@ -1,7 +1,7 @@
 # KQL-with-Azure-Activity-Logs
 
 <div style="text-align: center;">
-    <img src="https://github.com/user-attachments/assets/7eb1ee65-c753-46f6-ac05-9ba49c80ada3" alt="image" style="width: 80%; max-width: 800px;">
+    <img src="https://github.com/user-attachments/assets/28825d0e-2251-4e14-a295-70206bd76cf8" alt="image" style="width: 80%; max-width: 800px;">
 </div>
 
 ## Overview
@@ -10,8 +10,8 @@ This project dives into Azure Log Analytics to create a KQL (Kusto Query Languag
 We focus on summarizing and filtering logs from `AzureActivity`, looking specifically for **DELETE** operations marked as **"Success"** within a defined time window. Then, we drill down into a specific caller for deeper investigation.
 
 ---
-## 🕵️‍♂️ Scenario
-The security team estimates that the deletions occurred about 1-2 hours ago, as multiple end users rely on the file server (in this case, the virtual machine) for their daily tasks. This project simulates a security operations team responding to the disappearance of multiple resources from a subscription. The team needs to:
+## 🕵️‍♂️ Hypothesis
+The security team suspects that the deletions took place within the last 1–2 hours, based on reports from multiple end users indicating that the file server (the VM) is currently inaccessible. This project simulates a security operations team responding to the disappearance of multiple resources from a subscription. The team needs to:
 - Identify **who** deleted the resources,
 - Verify **how many** deletions were made,
 - And see **when** and **what** resources were deleted.
